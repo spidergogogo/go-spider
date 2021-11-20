@@ -1,0 +1,3 @@
+pidFile: spider.pid
+logFile: logs/daemon.log
+workDir: ./
