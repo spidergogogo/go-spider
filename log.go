@@ -16,7 +16,7 @@ func initLog() {
 	_logger := zaplog.NewLogger(
 		_logPath,
 		zaplog.WithErrFilePath(errLogPath),
-		zaplog.WithFileMaxAgeDay(15),
+		zaplog.WithFileMaxAgeDay(7),
 	)
 	log = _logger
 }
