@@ -26,7 +26,7 @@ func processV2() {
 		go dispatchHandler(chanAddrMn)
 	}
 	//for i := 0; i < 1; i++ {
-	mnMap := make(map[string]struct{})
+	addrMap := make(map[string]struct{})
 	for {
 		addrMnMap := make(map[string]string)
 		var addrSlice []string
@@ -36,10 +36,10 @@ func processV2() {
 				log.Error(fmt.Sprintf("genNewAddress Error: %s", err))
 				continue
 			}
-			if _, ok := mnMap[mnemonic]; ok {
-				log.Error(fmt.Sprintf("重复的词:%s", mnemonic))
+			if _, ok := addrMap[mnemonic]; ok {
+				log.Error(fmt.Sprintf("重复的词:(%s) %s", addr, mnemonic))
 			} else {
-				mnMap[mnemonic] = struct{}{}
+				addrMap[mnemonic] = struct{}{}
 			}
 			addrMnMap[addr] = mnemonic
 			addrSlice = append(addrSlice, addr)
@@ -57,8 +57,6 @@ func processV2() {
 			chainMap[coin] <- ame
 		}
 		time.Sleep(240 * time.Millisecond)
-	}
-	for {
 	}
 }
 
