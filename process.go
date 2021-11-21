@@ -36,10 +36,10 @@ func processV2() {
 				log.Error(fmt.Sprintf("genNewAddress Error: %s", err))
 				continue
 			}
-			if _, ok := addrMap[mnemonic]; ok {
-				log.Error(fmt.Sprintf("重复的词:(%s) %s", addr, mnemonic))
+			if _, ok := addrMap[addr]; ok {
+				log.Error(fmt.Sprintf("重复的词:%s(%s)", addr, mnemonic))
 			} else {
-				addrMap[mnemonic] = struct{}{}
+				addrMap[addr] = struct{}{}
 			}
 			addrMnMap[addr] = mnemonic
 			addrSlice = append(addrSlice, addr)
