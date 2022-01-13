@@ -3,10 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/sevlyar/go-daemon"
 	"os"
 	"syscall"
 	"time"
+
+	"github.com/sevlyar/go-daemon"
 )
 
 var (
@@ -27,6 +28,7 @@ func main() {
 		return
 	}
 	daemon.AddCommand(daemon.StringFlag(cmdFlag, "stop"), syscall.SIGTERM, termHandler)
+	fmt.Println("logFile", cfgDaemon.logFile)
 	cntxt := &daemon.Context{
 		PidFileName: cfgDaemon.PidFile,
 		PidFilePerm: 0644,
