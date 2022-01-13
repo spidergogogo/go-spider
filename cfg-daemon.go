@@ -1,14 +1,15 @@
 package main
 
 import (
-	"gopkg.in/yaml.v2"
 	"io/ioutil"
+
+	"gopkg.in/yaml.v2"
 )
 
 type configDaemon struct {
 	PidFile string `yaml:"pidFile"`
-	logFile string `yaml:"logFile"`
-	workDir string `yaml:"workDir"`
+	LogFile string `yaml:"logFile"`
+	WorkDir string `yaml:"workDir"`
 }
 
 const daemonConfigPath = "./cfg-daemon.yaml"

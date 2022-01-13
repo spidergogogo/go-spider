@@ -28,13 +28,12 @@ func main() {
 		return
 	}
 	daemon.AddCommand(daemon.StringFlag(cmdFlag, "stop"), syscall.SIGTERM, termHandler)
-	fmt.Println("logFile", cfgDaemon.logFile)
 	cntxt := &daemon.Context{
 		PidFileName: cfgDaemon.PidFile,
 		PidFilePerm: 0644,
-		LogFileName: cfgDaemon.logFile,
+		LogFileName: "", //cfgDaemon.LogFile,
 		LogFilePerm: 0644,
-		WorkDir:     cfgDaemon.workDir,
+		WorkDir:     cfgDaemon.WorkDir,
 		Umask:       027,
 	}
 	if len(daemon.ActiveFlags()) > 0 {
